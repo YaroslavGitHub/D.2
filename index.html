@@ -1,1 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>INN</title>
+    </head>
+    <body>
+        <script>
 
+            var card = ""
+            card = prompt("Enter your card number")
+           
+            card = card.replace(/ |-/g, "");
+            var x = card;
+            
+            card = card.split("", 16);
+            console.log(card, x)
+
+            function PersonCard( one, two, three, four, five, six, seven, eight, nine, ten, Xone, Xtwo, Xthree, Xfour, Xfive, Xsix, y ) {
+            this.dg1 = one;
+            this.dg2 = two;
+            this.dg3 = three;
+            this.dg4 = four;
+            this.dg5 = five;
+            this.dg6 = six;
+            this.dg7 = seven;
+            this.dg8 = eight;
+            this.dg9 = nine;
+            this.dg10 = ten;
+            this.dg11 = Xone;
+            this.dg12 = Xtwo;
+            this.dg13 = Xthree;
+            this.dg14 = Xfour;
+            this.dg15 = Xfive;
+            this.dg16 = Xsix;
+            this.CardNumber = y;
+            this.totalInfoTrue = function() {
+                return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()  + " , sex: " + this.sex() + ", dateOfBirth: "+this.dateOfBirth() + " , fullYears: " + this.FullYears();
+                };
+            this.totalInfoFalse = function() {
+                 return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()
+                };
+            }
+            
+            var myCard = new PersonCard([x[0]], [x[1]],[x[2]],[x[3]],[x[4]],[x[5]],[x[6]],[x[7]],[x[8]],[x[9]],[x[10]],[x[11]],[x[12]],[x[13]],[x[14]],[x[15]], x)   
+
+            
+        </script>
+    </body>
+</html>
