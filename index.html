@@ -7,6 +7,8 @@
 
             <p id="demo"></p>
             <p id="demo1"></p>
+            <p id="demo2"></p>
+            <p id="demo3"></p>
 
         <script>
 
@@ -27,14 +29,14 @@
             this.dg4 = four;
             this.CardStart = start;
             this.CardClean = clean;
-            /*this.totalInfoTrue = function() {
-                return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()  + " , sex: " + this.sex() + ", dateOfBirth: "+this.dateOfBirth() + " , fullYears: " + this.FullYears();
+            this.totalInfoTrue = function() {
+                return "card: " + this.CardStart + ", is Correct: " + this.isCorrect()  + " , paymentSystem: " + this.paymentSystem() + ", accepted: true";
                 };
             this.totalInfoFalse = function() {
-                 return "code: " + this.INNnumber + ", is Correct: " + this.ControlSum()
-                };*/
+                return "card: " + this.CardStart + ", accepted: false";
+                };
             }
-            
+           
             
             var myCard = new PersonCard([x[0]],[x[1]],[x[2]],[x[3]], y, x)   
             console.log(myCard)
@@ -55,7 +57,7 @@
                     }
                     sum += dg;
                     }
-            return (sum % 10 == 0) ? true : false;
+            return (sum % 10 == 0) ? "true" : "false";
             }
             
             PersonCard.prototype.paymentSystem = function() {
@@ -79,11 +81,28 @@
                     return ""
                 }
             }  
+                PersonCard.prototype.accepted = function() {
                 
+                if ((myCard.isCorrect() == "true") && (myCard.paymentSystem() == "Maestro" || "VISA" || "MasterCard")) {
+                    console.log(myCard.totalInfoTrue());
+                return document.getElementById("demo3").innerHTML = myCard.totalInfoTrue();
                 
-                document.getElementById("demo").innerHTML = myCard.isCorrect();
-                document.getElementById("demo1").innerHTML = myCard.paymentSystem();
 
+            }   
+                else if (myCard.isCorrect() == "false") {
+                    console.log(myCard.totalInfoFalse());
+                return document.getElementById("demo3").innerHTML = myCard.totalInfoFalse();
+                
+            }
+                
+                }
+                //4073642301090067   5116950036363428
+                /*document.getElementById("demo").innerHTML = myCard.isCorrect();
+                document.getElementById("demo1").innerHTML = myCard.paymentSystem();*/
+                document.getElementById("demo2").innerHTML = myCard.accepted();
+                
+                
+                
 
         </script>
     </body>
