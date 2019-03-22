@@ -64,7 +64,7 @@
                 if(+this.dg1 == 4) {
                     return "VISA"
                 }
-                else if ( 2220 < +("this.dg1" + "this.dg2" + "this.dg3" + "this.dg4") && +("this.dg1" + "this.dg2" + "this.dg3" + "this.dg4")< 2721) {
+                else if ( 2220 < +("this.dg1" + "this.dg2" + "this.dg3" + "this.dg4") <2721) {
                     return "MasterCard"
                 }
                 else if (+(this.dg1 + this.dg2) == 50) {
@@ -98,7 +98,7 @@
                 
                 console.log(myCard.accepted());
                 
-                
+              
                 
 
         </script>
