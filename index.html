@@ -6,6 +6,7 @@
     <body>
 
             <p id="demo"></p>
+            <p id="demo1"></p>
 
         <script>
 
@@ -47,7 +48,7 @@
             for(var i = this.CardClean.length - 1; i >= 0; i--) {
 
             var dg = +this.CardClean[i];
-            
+
             if(i % 2 == 0) {
                     dg *= 2;
                     dg = dg > 9 ? dg - 9 : dg
@@ -57,10 +58,31 @@
             return (sum % 10 == 0) ? true : false;
             }
             
-                 
+            PersonCard.prototype.paymentSystem = function() {
+
+                if(+this.dg1 == 4) {
+                    return "VISA"
+                }
+                else if ( 2220 < +("this.dg1" + "this.dg2" + "this.dg3" + "this.dg4") && +("this.dg1" + "this.dg2" + "this.dg3" + "this.dg4")< 2721) {
+                    return "MasterCard"
+                }
+                else if (+(this.dg1 + this.dg2) == 50) {
+                    return "Maestro"
+                }
+                else if ( 50 < +(this.dg1 + this.dg2) && +(this.dg1 + this.dg2)< 56) {
+                    return "MasterCard"
+                }
+                else if ( 55 < +(this.dg1 + this.dg2) && +(this.dg1 + this.dg2)<70)  {
+                    return "Maestro"
+                }
+                else {
+                    return ""
+                }
+            }  
                 
                 
                 document.getElementById("demo").innerHTML = myCard.isCorrect();
+                document.getElementById("demo1").innerHTML = myCard.paymentSystem();
 
 
         </script>
