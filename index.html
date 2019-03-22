@@ -5,9 +5,7 @@
     </head>
     <body>
 
-            <p id="demo"></p>
-            <p id="demo1"></p>
-            <p id="demo2"></p>
+            
             <p id="demo3"></p>
 
         <script>
@@ -23,18 +21,19 @@
             console.log(card)
 
             function PersonCard( one, two, three, four, start, clean ) {
-            this.dg1 = one;
-            this.dg2 = two;
-            this.dg3 = three;
-            this.dg4 = four;
-            this.CardStart = start;
-            this.CardClean = clean;
-            this.totalInfoTrue = function() {
-                return "card: " + this.CardStart + ", is Correct: " + this.isCorrect()  + " , paymentSystem: " + this.paymentSystem() + ", accepted: true";
-                };
-            this.totalInfoFalse = function() {
-                return "card: " + this.CardStart + ", accepted: false";
-                };
+
+                this.dg1 = one;
+                this.dg2 = two;
+                this.dg3 = three;
+                this.dg4 = four;
+                this.CardStart = start;
+                this.CardClean = clean;
+                this.totalInfoTrue = function() {
+                    return "card: " + this.CardStart + ", is Correct: " + this.isCorrect()  + " , paymentSystem: " + this.paymentSystem() + ", accepted: true";
+                    };
+                this.totalInfoFalse = function() {
+                    return "card: " + this.CardStart + ", accepted: false";
+                    };
             }
            
             
@@ -45,19 +44,19 @@
 
             PersonCard.prototype.isCorrect = function() {
 
-            var sum = 0;
+                var sum = 0;
 
-            for(var i = this.CardClean.length - 1; i >= 0; i--) {
+                for(var i = this.CardClean.length - 1; i >= 0; i--) {
 
-            var dg = +this.CardClean[i];
+                var dg = +this.CardClean[i];
 
-            if(i % 2 == 0) {
+                if(i % 2 == 0) {
                     dg *= 2;
                     dg = dg > 9 ? dg - 9 : dg
                     }
                     sum += dg;
                     }
-            return (sum % 10 == 0) ? "true" : "false";
+                return (sum % 10 == 0) ? "true" : "false";
             }
             
             PersonCard.prototype.paymentSystem = function() {
@@ -81,25 +80,23 @@
                     return ""
                 }
             }  
-                PersonCard.prototype.accepted = function() {
-                
-                if ((myCard.isCorrect() == "true") && (myCard.paymentSystem() == "Maestro" || "VISA" || "MasterCard")) {
-                    console.log(myCard.totalInfoTrue());
-                return document.getElementById("demo3").innerHTML = myCard.totalInfoTrue();
-                
 
-            }   
-                else if (myCard.isCorrect() == "false") {
-                    console.log(myCard.totalInfoFalse());
-                return document.getElementById("demo3").innerHTML = myCard.totalInfoFalse();
+            PersonCard.prototype.accepted = function() {
                 
-            }
+                if ((this.isCorrect() == "true") && (this.paymentSystem() == "Maestro" || "VISA" || "MasterCard")) {
+                    console.log(this.totalInfoTrue());
+                return document.getElementById("demo3").innerHTML = this.totalInfoTrue();
+                
+                }   
+                else if (this.isCorrect() == "false") {
+                    console.log(this.totalInfoFalse());
+                return document.getElementById("demo3").innerHTML = this.totalInfoFalse();
                 
                 }
-                //4073642301090067   5116950036363428
-                /*document.getElementById("demo").innerHTML = myCard.isCorrect();
-                document.getElementById("demo1").innerHTML = myCard.paymentSystem();*/
-                document.getElementById("demo2").innerHTML = myCard.accepted();
+                
+                }
+                
+                console.log(myCard.accepted());
                 
                 
                 
